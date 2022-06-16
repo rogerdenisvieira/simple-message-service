@@ -1,8 +1,10 @@
-package rogerdenisvieira.messageservice.publisher.MessageServicePublisher;
+package rogerdenisvieira.messageservice;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@EnableRabbit
 @SpringBootApplication
 public class MessageServicePublisherApplication {
 
