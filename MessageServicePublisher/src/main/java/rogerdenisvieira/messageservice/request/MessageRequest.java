@@ -1,4 +1,4 @@
-package rogerdenisvieira.messageservice.Requests;
+package rogerdenisvieira.messageservice.request;
 
 public class MessageRequest {
 
