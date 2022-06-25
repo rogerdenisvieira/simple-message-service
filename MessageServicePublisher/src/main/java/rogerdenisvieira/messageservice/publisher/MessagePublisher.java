@@ -1,5 +1,6 @@
 package rogerdenisvieira.messageservice.publisher;
 
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +10,18 @@ import org.springframework.stereotype.Component;
 public class MessagePublisher {
 
     private final RabbitTemplate rabbitTemplate;
-    private final Queue queue;
+
+    private final DirectExchange exchange;
 
 
     @Autowired
-    public MessagePublisher(RabbitTemplate rabbitTemplate, Queue queue) {
+    public MessagePublisher(RabbitTemplate rabbitTemplate, DirectExchange exchange) {
         this.rabbitTemplate = rabbitTemplate;
-        this.queue = queue;
+        this.exchange = exchange;
     }
 
     public void sendMessage(String message){
-        this.rabbitTemplate.convertAndSend(this.queue.getName(), message);
+
+        this.rabbitTemplate.convertAndSend(exchange.getName(), "test-routing-key", message);
     }
 }

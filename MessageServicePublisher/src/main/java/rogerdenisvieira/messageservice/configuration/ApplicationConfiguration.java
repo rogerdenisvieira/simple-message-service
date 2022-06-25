@@ -16,10 +16,13 @@ public class ApplicationConfiguration {
     @Value("${queue.name}")
     private String queueName;
 
-    @Bean
-    public Queue queue() {
-        return new Queue(queueName, true);
+
+    public String getExchangeName() {
+        return exchangeName;
     }
 
+    public String getQueueName() {
+        return queueName;
+    }
 }
 
